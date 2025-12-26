@@ -1,0 +1,76 @@
+db:
+  uri: "mongodb://localhost:27017"
+  name: "lab_corpus"
+
+logic:
+  user_agent: "NikitaLabCrawler/1.0 (edu; contact: Nmedvedev85@mail.ru)"
+  delay_seconds: 0.5
+  timeout_seconds: 20
+  max_retries: 3
+  threads: 6
+  wikisource_target: 26000  
+  libru_target: 9000       
+
+sources:
+  - name: "wikisource_ru"
+    priority: 1 
+    seed:
+      type: "mediawiki_api_allpages"
+      api_url: "https://ru.wikisource.org/w/api.php"
+      params:
+        apnamespace: 0
+        aplimit: 50
+    url_builder:
+      type: "wiki_page"
+      base: "https://ru.wikisource.org/wiki/"
+
+  - name: "libru"
+    priority: 2  
+    seed:
+      type: "url_list"
+      urls:
+        - "https://lib.ru/"
+        - "https://lib.ru/POEZIQ/"
+        - "https://lib.ru/PROZA/"
+        - "https://lib.ru/INOSTR/"
+        - "https://lib.ru/SCIFICTION/"
+        - "https://lib.ru/DETEKTIWY/"
+        - "https://lib.ru/FANTASTIKA/"
+        
+        - "https://lib.ru/A/"
+        - "https://lib.ru/B/"
+        - "https://lib.ru/W/"
+        - "https://lib.ru/G/"
+        - "https://lib.ru/D/"
+        - "https://lib.ru/E/"
+        - "https://lib.ru/EW/"
+        - "https://lib.ru/ZH/"
+        - "https://lib.ru/Z/"
+        - "https://lib.ru/I/"
+        - "https://lib.ru/J/"
+        - "https://lib.ru/K/"
+        - "https://lib.ru/L/"
+        - "https://lib.ru/M/"
+        - "https://lib.ru/N/"
+        - "https://lib.ru/O/"
+        - "https://lib.ru/P/"
+        - "https://lib.ru/R/"
+        - "https://lib.ru/S/"
+        - "https://lib.ru/T/"
+        - "https://lib.ru/U/"
+        - "https://lib.ru/F/"
+        - "https://lib.ru/H/"
+        - "https://lib.ru/C/"
+        - "https://lib.ru/CH/"
+        - "https://lib.ru/SH/"
+        - "https://lib.ru/SCH/"
+        
+        - "https://lib.ru/PUSHKIN/"
+        - "https://lib.ru/LERMONTOW/"
+        - "https://lib.ru/TOLSTOJ/"
+        - "https://lib.ru/DOSTOEWSKIJ/"
+        - "https://lib.ru/GOGOL/"
+        - "https://lib.ru/CHEHOW/"
+        - "https://lib.ru/BULGAKOW/"
+        - "https://lib.ru/TURGENEW/"
+        - "https://lib.ru/ESENIN/"
